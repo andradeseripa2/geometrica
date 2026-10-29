@@ -23,6 +23,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css?v={{ versao }}">
+<script>
+  // Endereço digitado, colado ou vindo do histórico com #seção: abre no topo.
+  // Cliques dentro do próprio site continuam levando à seção.
+  (function () {
+    var h = location.hash;
+    if (!h || /_token|access_token/.test(h)) return;
+    var interno = false;
+    try { interno = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
+    if (!interno) {
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      history.replaceState(null, "", location.pathname + location.search);
+    }
+  })();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
