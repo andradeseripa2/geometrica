@@ -31,9 +31,9 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; overflow-x: hidden; overflow-x: clip; }
+html { overflow-anchor: none; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; overflow-x: hidden; overflow-x: clip; }
 html, body { max-width: 100%; }
-body { margin: 0; background: var(--bg); color: var(--osso); font-family: var(--f-texto); font-size: 18px; line-height: 1.62; overflow-x: hidden; overflow-x: clip; position: relative; }
+body { margin: 0; background: var(--bg); color: var(--osso); font-family: var(--f-texto); font-size: 18px; line-height: 1.62; position: relative; }
 main, section, footer, figure { overflow-x: clip; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }

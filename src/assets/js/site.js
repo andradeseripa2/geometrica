@@ -2,7 +2,14 @@
 (function () {
   // Sempre abrir no topo (a não ser que o link aponte para uma seção)
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-  if (!location.hash) window.scrollTo(0, 0);
+  var mexeu = false;
+  ["touchstart", "wheel", "keydown", "mousedown"].forEach(function (ev) {
+    window.addEventListener(ev, function () { mexeu = true; }, { passive: true, once: true });
+  });
+  function topo0() { if (!location.hash && !mexeu) window.scrollTo(0, 0); }
+  topo0();
+  window.addEventListener("load", topo0);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(topo0);
   var reduzir = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Barra superior: ganha fundo ao rolar
