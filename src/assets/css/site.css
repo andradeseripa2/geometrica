@@ -31,8 +31,10 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--osso); font-family: var(--f-texto); font-size: 18px; line-height: 1.62; overflow-x: clip; }
+html { scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; overflow-x: clip; }
+html, body { max-width: 100%; }
+body { margin: 0; background: var(--bg); color: var(--osso); font-family: var(--f-texto); font-size: 18px; line-height: 1.62; overflow-x: clip; position: relative; }
+main, section, footer, figure { overflow-x: clip; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 a:hover { color: var(--laranja); }
@@ -235,6 +237,7 @@ h1, h2, h3 { margin: 0; }
 .js .fr { transform: translate3d(48px, 0, 0); }
 .js .fu { transform: translate3d(0, 36px, 0); }
 .js .fl.is-in, .js .fr.is-in, .js .fu.is-in { opacity: 1; transform: none; }
+@media (max-width: 760px) { .js .fl { transform: translate3d(-24px, 0, 0); } .js .fr { transform: translate3d(24px, 0, 0); } .js .fu { transform: translate3d(0, 24px, 0); } }
 .js .plan { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 3.2s cubic-bezier(.45, 0, .2, 1); }
 .js .plan.is-in { stroke-dashoffset: 0; }
 
@@ -296,6 +299,17 @@ h1, h2, h3 { margin: 0; }
 @media (max-width: 520px) {
   .t-secao { hyphens: auto; }
   .numeros .g, .equipe-grade { grid-template-columns: 1fr; }
-  .marca .mono { display: none; }
+  .marca { display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; column-gap: 8px; row-gap: 0; align-items: center; }
+  .marca-logo { grid-row: 1 / span 2; width: 42px; }
+  .marca .disp { font-size: 22px; line-height: 1; }
+  .marca .mono { font-size: 9px; letter-spacing: .18em; line-height: 1.4; }
   .numero { font-size: 60px; }
+  .dif-grade > div { padding: 24px 18px; font-size: 17px; }
+  .dif-grade .destaque .numero { font-size: 46px; }
+  .membro-foto { aspect-ratio: 4 / 3; }
+  .membro-foto .iniciais { font-size: 64px; }
+  .faixa-rotulo { display: none; }
+  .chips .chip { font-size: 12px; }
+  .contato h2 { font-size: clamp(44px, 13vw, 64px); }
+  .g { padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
 }

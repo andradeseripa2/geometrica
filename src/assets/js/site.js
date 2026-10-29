@@ -1,5 +1,8 @@
 // GeoMétrica — comportamento do site (sem dependências)
 (function () {
+  // Sempre abrir no topo (a não ser que o link aponte para uma seção)
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  if (!location.hash) window.scrollTo(0, 0);
   var reduzir = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Barra superior: ganha fundo ao rolar
@@ -45,7 +48,6 @@
     fecharMenu();
     if (botaoMenu) botaoMenu.textContent = "Menu";
     rolarAte(alvo);
-    history.replaceState(null, "", url.hash);
   });
 
   // Formulário: monta a mensagem e abre o WhatsApp
