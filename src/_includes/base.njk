@@ -38,7 +38,6 @@
   "knowsAbout": ["Georreferenciamento", "Topografia com drones", "Aerolevantamento", "SIGEF", "Regularização fundiária", "Monitoramento ambiental"]
 }
 </script>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
 </head>
 <body>
 {% set wa = "https://wa.me/55" ~ (site.whatsapp | soDigitos) ~ "?text=" ~ (site.mensagemWhatsapp | urlencode) %}
@@ -71,14 +70,16 @@
 </footer>
 <script src="/assets/js/site.js?v={{ versao }}" defer></script>
 <script>
-  // Depois de aceitar o convite ou trocar a senha, leva para o painel.
-  window.addEventListener("load", function () {
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", function (user) {
-        if (!user) window.netlifyIdentity.on("login", function () { document.location.href = "/admin/"; });
-      });
-    }
-  });
+  // O login do painel só é carregado quando o link do e-mail traz um convite ou
+  // recuperação de senha. Assim ele não interfere na rolagem do site.
+  if (/(invite|recovery|confirmation|email_change)_token|access_token/.test(location.hash)) {
+    var w = document.createElement("script");
+    w.src = "https://identity.netlify.com/v1/netlify-identity-widget.js";
+    w.onload = function () {
+      window.netlifyIdentity.on("login", function () { document.location.href = "/admin/"; });
+    };
+    document.head.appendChild(w);
+  }
 </script>
 </body>
 </html>
