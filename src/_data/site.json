@@ -1,0 +1,22 @@
+{
+  "nome": "GeoMétrica SIG Soluções",
+  "razaoSocial": "GeoMétrica SIG Soluções LTDA",
+  "cnpj": "65.563.278/0001-12",
+  "url": "https://geometricasig.com.br",
+  "cidade": "Recife",
+  "estado": "PE",
+  "seoTitulo": "GeoMétrica SIG Soluções | Inteligência Territorial de Alta Precisão",
+  "seoDescricao": "GeoMétrica SIG Soluções — topografia com drones, georreferenciamento, inteligência territorial e monitoramento ambiental em Recife e todo o Brasil.",
+  "imagemCompartilhamento": "/assets/img/compartilhar.png",
+  "whatsapp": "(81) 98988-5671",
+  "mensagemWhatsapp": "Olá! Vim pelo site e gostaria de um diagnóstico.",
+  "telefones": [
+    { "numero": "(81) 98988-5671" },
+    { "numero": "(21) 97473-9195" }
+  ],
+  "emails": [
+    { "email": "geometricasigsolucoes@gmail.com" },
+    { "email": "ehorus42@gmail.com" }
+  ],
+  "sede": "Recife - PE"
+}

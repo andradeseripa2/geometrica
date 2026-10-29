@@ -1,0 +1,18 @@
+{# Cartão de notícia (home e lista). Espera a variável `post`. #}
+<article class="post {{ 'fl' if loop.index0 % 2 == 0 else 'fr' }}">
+<a class="post-capa" href="{{ post.url }}" tabindex="-1" aria-hidden="true">
+<div class="capa {{ 'terra' if loop.index0 % 2 == 1 }}">
+{% if post.data.capa %}
+<img src="{{ post.data.capa | img(900) }}" alt="" loading="lazy">
+{% else %}
+<svg class="curvas" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#F2F0E6" stroke-opacity=".14" stroke-width="1.2"><ellipse cx="320" cy="60" rx="190" ry="120"></ellipse><ellipse cx="326" cy="56" rx="150" ry="94"></ellipse><ellipse cx="332" cy="52" rx="110" ry="68"></ellipse><ellipse cx="338" cy="48" rx="70" ry="42"></ellipse><ellipse cx="342" cy="46" rx="32" ry="18"></ellipse></g></svg>
+{% endif %}
+<div class="tags">{% for t in post.data.etiquetas %}<span>{{ t }}</span>{% endfor %}</div>
+{% if not post.data.capa %}<div class="titulo-capa disp">{{ post.data.capaTexto or post.data.titulo }}</div>{% endif %}
+</div>
+</a>
+<div class="post-meta">{{ post.data.periodo or (post.date | dataBR) }}{% if post.data.local %} · {{ post.data.local }}{% endif %}</div>
+<h3><a href="{{ post.url }}">{{ post.data.titulo }}</a></h3>
+<p>{{ post.data.resumo }}</p>
+<a class="ler" href="{{ post.url }}">Ler notícia completa →</a>
+</article>

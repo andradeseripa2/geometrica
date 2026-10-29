@@ -1,0 +1,208 @@
+---
+layout: base.njk
+permalink: /
+eleventyExcludeFromCollections: false
+---
+{% set h = home %}
+{% set wa = "https://wa.me/55" ~ (site.whatsapp | soDigitos) %}
+
+<section class="hero">
+{% if h.hero.imagem %}
+<img class="hero-foto terreno" src="{{ h.hero.imagem | img(2000) }}" alt="" fetchpriority="high">
+<div class="hero-escurecer" aria-hidden="true"></div>
+<svg class="hero-fundo hero-desenho" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+{% else %}
+<svg class="hero-fundo terreno" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><pattern id="h-sulcos" width="9" height="9" patternUnits="userSpaceOnUse"><rect width="9" height="2" fill="#000" fill-opacity=".13"></rect></pattern></defs>
+{% set id = "h" %}{% include "terreno.njk" %}
+</svg>
+<div class="hero-escurecer" aria-hidden="true"></div>
+<svg class="hero-fundo hero-desenho" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+{% endif %}
+<polygon class="lim" pathLength="1" points="600,220 930,160 1040,400 820,560 560,470" fill="#FF5A1F" fill-opacity=".07" stroke="#FF5A1F" stroke-width="2.5"></polygon>
+<polygon class="lim2" points="600,220 930,160 1040,400 820,560 560,470" fill="none" stroke="#111410" stroke-width="2.5" stroke-dasharray="8 6" opacity=".6"></polygon>
+<g class="vtx" fill="#FF5A1F"><rect x="594" y="214" width="12" height="12"></rect><rect x="924" y="154" width="12" height="12"></rect><rect x="1034" y="394" width="12" height="12"></rect><rect x="814" y="554" width="12" height="12"></rect><rect x="554" y="464" width="12" height="12"></rect></g>
+<g class="vlbl" font-family="JetBrains Mono, monospace" font-size="13" fill="#F2F0E6"><text x="548" y="206">V-01</text><text x="944" y="150">V-02</text><text x="1056" y="404">V-03</text><text x="832" y="586">V-04</text><text x="500" y="490">V-05</text></g>
+</svg>
+<div class="g hero-conteudo">
+<div class="hero-coord"><span class="ponto" style="color: var(--laranja)" aria-hidden="true">●</span> {{ h.hero.coordenadas }}</div>
+<h1 class="disp">{{ h.hero.titulo }}</h1>
+<p class="hero-sub">{{ h.hero.subtitulo }}</p>
+<div class="botoes">
+<a class="btn btn-laranja" href="#contato">{{ h.hero.botaoPrincipal }} →</a>
+<a class="btn btn-contorno" href="#quem">{{ h.hero.botaoSecundario }}</a>
+</div>
+</div>
+</section>
+
+<section class="escuro numeros">
+<div class="g">
+<div class="item fl"><div class="numero">+<span data-contar="{{ h.numeros.anos }}">{{ h.numeros.anos }}</span></div><div class="numero-rotulo">{{ h.numeros.anosRotulo }}</div></div>
+<div class="item fl"><div class="numero">+<span data-contar="{{ h.numeros.horasVoo }}">{{ h.numeros.horasVoo }}</span>k</div><div class="numero-rotulo">{{ h.numeros.horasVooRotulo }}</div></div>
+<div class="item fr" style="display: flex; align-items: center"><div class="forte">{{ h.numeros.destaque1 }}</div></div>
+<div class="item fr"><div class="forte">{{ h.numeros.destaque2Titulo }}</div><div class="apoio">{{ h.numeros.destaque2Texto }}</div></div>
+</div>
+</section>
+
+<section id="quem" class="claro secao">
+<div class="g">
+<div class="rotulo fu" style="margin-bottom: 28px">{{ h.quemSomos.rotulo }}</div>
+<div class="duas">
+<h2 class="disp t-secao fl">{{ h.quemSomos.titulo }}</h2>
+<div class="texto fr"><p>{{ h.quemSomos.paragrafo1 }}</p><p>{{ h.quemSomos.paragrafo2 }}</p></div>
+</div>
+</div>
+</section>
+
+<section id="proposito" class="escuro secao">
+<div class="g">
+<div class="cabecalho-secao">
+<h2 class="disp t-secao fl">{{ h.proposito.titulo }}</h2>
+<p class="fr">{{ h.proposito.subtitulo }}</p>
+</div>
+<div class="metades">
+<div class="painel fl"><div class="rotulo">NOSSA MISSÃO</div><p>{{ h.proposito.missao }}</p></div>
+<div class="painel fr"><div class="rotulo">NOSSA VISÃO</div><p>{{ h.proposito.visao }}</p></div>
+</div>
+<div class="rotulo fu" style="margin-bottom: 12px">NOSSOS VALORES</div>
+<div>
+{% for v in h.proposito.valores %}
+<div class="linha-valor {{ 'fl' if loop.index0 % 2 == 0 else 'fr' }}"><h3>{{ v.titulo }}</h3><p>{{ v.texto }}</p></div>
+{% endfor %}
+</div>
+</div>
+</section>
+
+<figure id="solucoes" class="faixa">
+<div class="faixa-caixa">
+{% if h.especialidades.imagemFaixa %}
+<img src="{{ h.especialidades.imagemFaixa | img(2000) }}" alt="" loading="lazy">
+{% endif %}
+<svg viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+{% if not h.especialidades.imagemFaixa %}
+<defs><pattern id="f-sulcos" width="9" height="9" patternUnits="userSpaceOnUse"><rect width="9" height="2" fill="#000" fill-opacity=".13"></rect></pattern></defs>
+<g transform="translate(-120 -260)">{% set id = "f" %}{% include "terreno.njk" %}</g>
+{% endif %}
+<rect x="196" y="66" width="1048" height="428" fill="none" stroke="#F5F2E7" stroke-opacity=".7" stroke-width="1.5" stroke-dasharray="4 6"></rect>
+<path class="plan" pathLength="1" d="M220 90 H1220 V166 H220 V242 H1220 V318 H220 V394 H1220 V470 H220" fill="none" stroke="#FF5A1F" stroke-width="3"></path>
+<circle cx="220" cy="90" r="7" fill="#FF5A1F"></circle>
+<circle class="drone halo" cx="0" cy="0" r="8" fill="#FF5A1F" fill-opacity=".55"></circle>
+<g class="drone"><image class="drone-logo" href="/assets/img/logo-drone-claro.png" x="-46" y="-28" width="92" height="55"></image></g>
+<text x="196" y="52" font-family="JetBrains Mono, monospace" font-size="13" fill="#F5F2E7">PLANO DE VOO · FAIXAS PARALELAS · RTK</text>
+</svg>
+</div>
+</figure>
+
+<section class="escuro secao">
+<div class="g">
+<div class="cabecalho-secao">
+<h2 class="disp t-secao fl">{{ h.especialidades.titulo }}</h2>
+<p class="fr">{{ h.especialidades.subtitulo }}</p>
+</div>
+{% for e in h.especialidades.itens %}
+<div class="linha-esp fr">
+<h3>{{ e.titulo }}</h3>
+<p>{{ e.texto }}</p>
+<div class="selos">{% for s in e.selos %}<span class="selo {{ 'selo-relva' if loop.index0 == 1 }}">{{ s.selo }}</span>{% endfor %}</div>
+</div>
+{% endfor %}
+<div class="chips fu">{% for o in h.especialidades.outros %}<span class="chip">{{ o.nome }}</span>{% endfor %}</div>
+<div class="chamada fu">
+<div><strong>{{ h.especialidades.chamadaTitulo }}</strong><span>{{ h.especialidades.chamadaTexto }}</span></div>
+<a class="btn btn-laranja" href="#contato">{{ h.especialidades.chamadaBotao }}</a>
+</div>
+</div>
+</section>
+
+<section id="noticias" class="claro secao">
+<div class="g">
+<div class="cabecalho-secao">
+<div style="display: flex; flex-direction: column; gap: 14px"><div class="rotulo fu">{{ h.noticias.rotulo }}</div><h2 class="disp t-secao fl">{{ h.noticias.titulo }}</h2></div>
+<p class="fr">{{ h.noticias.subtitulo }}</p>
+</div>
+<div class="noticias-grade">
+{% for post in collections.noticias | head(4) %}
+{% include "cartao-noticia.njk" %}
+{% endfor %}
+</div>
+{% if collections.noticias.length > 4 %}
+<p style="margin-top: 40px"><a class="btn btn-contorno" href="/noticias/">Ver todas as notícias</a></p>
+{% endif %}
+</div>
+</section>
+
+<section id="diferenciais" class="escuro secao">
+<div class="g dif">
+<div class="dif-texto">
+<h2 class="disp fl">{{ h.diferenciais.tituloInicio }} <em>{{ h.diferenciais.tituloDestaque }}</em></h2>
+<p class="fl">{{ h.diferenciais.texto }}</p>
+{% for d in h.diferenciais.itens %}
+<div class="dif-item fl"><h3>{{ d.titulo }}</h3><p>{{ d.texto }}</p></div>
+{% endfor %}
+</div>
+<div class="dif-grade fr">
+{% for s in h.diferenciais.selos %}<div><span class="marcador" aria-hidden="true"></span>{{ s.nome }}</div>{% endfor %}
+<div class="destaque"><span class="numero"><span data-contar="{{ h.diferenciais.suporte }}">{{ h.diferenciais.suporte }}</span>%</span><span class="mono">{{ h.diferenciais.suporteRotulo }}</span></div>
+</div>
+</div>
+</section>
+
+<section id="equipe" class="claro secao">
+<div class="g">
+<div class="cabecalho-secao">
+<h2 class="disp t-secao fl">{{ h.equipe.titulo }}</h2>
+<p class="fr">{{ h.equipe.subtitulo }}</p>
+</div>
+<div class="equipe-grade">
+{% for m in collections.equipe %}
+<article class="membro fu">
+<div class="membro-foto">
+{% if m.data.foto %}
+<img src="{{ m.data.foto | img(600) }}" alt="Foto de {{ m.data.nome }}" loading="lazy">
+{% else %}
+<svg viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#F2F0E6" stroke-opacity=".16" stroke-width="1.2">{% set cx = [150, 40, 120, 100][loop.index0 % 4] %}{% set cy = [70, 90, 200, 40][loop.index0 % 4] %}<ellipse cx="{{ cx }}" cy="{{ cy }}" rx="120" ry="90"></ellipse><ellipse cx="{{ cx }}" cy="{{ cy }}" rx="90" ry="66"></ellipse><ellipse cx="{{ cx }}" cy="{{ cy }}" rx="60" ry="44"></ellipse><ellipse cx="{{ cx }}" cy="{{ cy }}" rx="28" ry="20"></ellipse></g></svg>
+<span class="iniciais disp" aria-hidden="true">{{ m.data.nome | iniciais }}</span>
+{% endif %}
+</div>
+<div class="nome">{{ m.data.nome }}</div>
+<div class="cargo">{{ m.data.cargo }}</div>
+<p>{{ m.data.bio }}</p>
+</article>
+{% endfor %}
+</div>
+
+<div class="faq">
+<div class="fl"><h2 class="disp">{{ h.faq.titulo }}</h2><p style="color: var(--tinta-2)">{{ h.faq.subtitulo }}</p></div>
+<div class="faq-lista fr">
+{% for q in h.faq.perguntas %}
+<details{% if loop.first %} open{% endif %}><summary>{{ q.pergunta }}</summary><p>{{ q.resposta }}</p></details>
+{% endfor %}
+</div>
+</div>
+</div>
+</section>
+
+<section id="contato" class="escuro secao">
+<div class="g contato">
+<div class="contato-texto">
+<h2 class="disp fl">{{ h.contato.titulo }}</h2>
+<p class="fl">{{ h.contato.texto }}</p>
+<dl class="fl">
+<div><dt>TELEFONES</dt><dd>{% for t in site.telefones %}<a href="tel:+55{{ t.numero | soDigitos }}" style="text-decoration: none">{{ t.numero }}</a><br>{% endfor %}</dd></div>
+<div><dt>E-MAILS</dt><dd>{% for e in site.emails %}<a href="mailto:{{ e.email }}" style="text-decoration: none">{{ e.email }}</a><br>{% endfor %}</dd></div>
+<div><dt>SEDE ADMINISTRATIVA</dt><dd>{{ site.sede }}</dd></div>
+</dl>
+</div>
+<form class="form fr" data-whatsapp="55{{ site.whatsapp | soDigitos }}">
+<label for="c-nome">SEU NOME<input id="c-nome" name="nome" type="text" autocomplete="name" required></label>
+<label for="c-servico">TIPO DE SERVIÇO (opcional)<select id="c-servico" name="servico"><option value="">Selecione</option>{% for s in h.contato.servicos %}<option>{{ s.nome }}</option>{% endfor %}</select></label>
+<div class="lado">
+<label for="c-mun">MUNICÍPIO/UF (opcional)<input id="c-mun" name="municipio" type="text" autocomplete="address-level2"></label>
+<label for="c-area">ÁREA APROXIMADA (opcional)<input id="c-area" name="area" type="text" placeholder="ex.: 120 ha"></label>
+</div>
+<label for="c-msg">SUA MENSAGEM (opcional)<textarea id="c-msg" name="mensagem" rows="3"></textarea></label>
+<button class="btn btn-laranja" type="submit">{{ h.contato.botao }}</button>
+<p class="aviso">Ao enviar, o WhatsApp abre com a sua mensagem pronta. Nada é guardado neste site.</p>
+</form>
+</div>
+</section>

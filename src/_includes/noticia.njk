@@ -1,0 +1,18 @@
+---
+layout: base.njk
+---
+<article class="escuro artigo">
+<div class="g">
+<div class="artigo-cab">
+<a class="voltar" href="/#noticias">← Notícias</a>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">{% for t in etiquetas %}<span class="selo">{{ t }}</span>{% endfor %}</div>
+<h1 class="disp">{{ titulo }}</h1>
+<div class="mono" style="font-size: 13px; color: var(--osso-3)">{{ periodo or (page.date | dataBR) }}{% if local %} · {{ local }}{% endif %}</div>
+</div>
+{% if capa %}<figure class="artigo-capa"><img src="{{ capa | img(1600) }}" alt="{{ capaAlt or titulo }}"></figure>{% endif %}
+<div class="artigo-corpo">
+{{ content | safe }}
+</div>
+<p style="margin-top: 64px"><a class="btn btn-laranja" href="/#contato">Solicitar Diagnóstico →</a></p>
+</div>
+</article>

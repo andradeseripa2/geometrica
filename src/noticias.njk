@@ -1,0 +1,18 @@
+---
+layout: base.njk
+titulo: Notícias & Eventos
+permalink: /noticias/
+---
+<section class="claro secao" style="padding-top: 160px">
+<div class="g">
+<div class="cabecalho-secao">
+<h1 class="disp t-secao">{{ home.noticias.titulo }}</h1>
+<p>{{ home.noticias.subtitulo }}</p>
+</div>
+<div class="noticias-grade">
+{% for post in collections.noticias %}
+{% include "cartao-noticia.njk" %}
+{% endfor %}
+</div>
+</div>
+</section>

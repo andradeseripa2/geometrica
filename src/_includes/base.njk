@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{% set tituloPagina = (titulo ~ " | " ~ site.nome) if titulo else site.seoTitulo %}
+{% set descricaoPagina = resumo or site.seoDescricao %}
+<title>{{ tituloPagina }}</title>
+<meta name="description" content="{{ descricaoPagina }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta name="theme-color" content="#1D2A21">
+<meta property="og:type" content="{{ 'article' if titulo else 'website' }}">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="{{ site.nome }}">
+<meta property="og:title" content="{{ tituloPagina }}">
+<meta property="og:description" content="{{ descricaoPagina }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ site.url }}{{ (capa or site.imagemCompartilhamento) }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": {{ site.nome | dump | safe }},
+  "legalName": {{ site.razaoSocial | dump | safe }},
+  "url": {{ site.url | dump | safe }},
+  "description": {{ site.seoDescricao | dump | safe }},
+  "telephone": {{ ("+55" ~ (site.whatsapp | soDigitos)) | dump | safe }},
+  "email": {{ site.emails[0].email | dump | safe }},
+  "address": { "@type": "PostalAddress", "addressLocality": {{ site.cidade | dump | safe }}, "addressRegion": {{ site.estado | dump | safe }}, "addressCountry": "BR" },
+  "areaServed": "BR",
+  "knowsAbout": ["Georreferenciamento", "Topografia com drones", "Aerolevantamento", "SIGEF", "Regularização fundiária", "Monitoramento ambiental"]
+}
+</script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+</head>
+<body>
+{% set wa = "https://wa.me/55" ~ (site.whatsapp | soDigitos) ~ "?text=" ~ (site.mensagemWhatsapp | urlencode) %}
+<header class="topo" data-topo>
+<div class="g topo-in">
+<a class="marca" href="/#inicio"><img class="marca-logo" src="/assets/img/logo-drone-claro.png" alt="" width="54" height="32"><span class="disp">GeoMétrica</span><span class="mono">SIG SOLUÇÕES</span></a>
+<nav class="menu" id="menu" aria-label="Seções do site">
+<a href="/#quem">Institucional</a>
+<a href="/#proposito">Nosso Propósito</a>
+<a href="/#solucoes">Soluções</a>
+<a href="/#noticias">Notícias &amp; Eventos</a>
+<a href="/#diferenciais">Diferenciais</a>
+<a href="/#equipe">Equipe</a>
+<a href="/#contato">Contato</a>
+</nav>
+<button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu" data-menu>Menu</button>
+<a class="btn btn-laranja btn-sm topo-cta" href="/#contato">Diagnóstico Gratuito</a>
+</div>
+</header>
+<main id="inicio">
+{{ content | safe }}
+</main>
+<footer class="escuro">
+<div class="g rodape">
+<img src="/assets/img/logo-drone-laranja.png" alt="" width="40" height="24" style="width:40px;height:auto">
+<span>© {{ ano }} {{ site.razaoSocial }}. Todos os direitos reservados.</span>
+<span>CNPJ: {{ site.cnpj }} | {{ site.sede }}</span>
+<a href="/politica-de-privacidade/">Política de privacidade</a>
+</div>
+</footer>
+<script src="/assets/js/site.js" defer></script>
+<script>
+  // Depois de aceitar o convite ou trocar a senha, leva para o painel.
+  window.addEventListener("load", function () {
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function (user) {
+        if (!user) window.netlifyIdentity.on("login", function () { document.location.href = "/admin/"; });
+      });
+    }
+  });
+</script>
+</body>
+</html>

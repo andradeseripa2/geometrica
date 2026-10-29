@@ -1,0 +1,199 @@
+# Painel de edição da GeoMétrica (Decap CMS)
+# Login por e-mail e senha via Netlify Identity + Git Gateway.
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: "Painel: cria {{collection}} “{{slug}}”"
+    update: "Painel: atualiza {{collection}} “{{slug}}”"
+    delete: "Painel: remove {{collection}} “{{slug}}”"
+    uploadMedia: "Painel: envia imagem “{{path}}”"
+    deleteMedia: "Painel: remove imagem “{{path}}”"
+
+locale: pt
+site_url: https://geometricasig.com.br
+display_url: https://geometricasig.com.br
+logo_url: /assets/img/logo-drone-escuro.png
+
+media_folder: src/assets/img/uploads
+public_folder: /assets/img/uploads
+
+collections:
+  # ───────────────── NOTÍCIAS ─────────────────
+  - name: noticias
+    label: Notícias & Eventos
+    label_singular: Notícia
+    description: "Posts que aparecem na seção Notícias & Atualizações. As 4 mais recentes vão para a página inicial."
+    folder: src/noticias
+    extension: md
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{titulo}} — {{date | date('DD/MM/YYYY')}}"
+    sortable_fields: [date, titulo]
+    view_filters: []
+    fields:
+      - { name: titulo, label: Título, widget: string, pattern: ['^.{1,90}$', 'Use até 90 caracteres'], hint: "Aparece no cartão e no topo da notícia." }
+      - { name: date, label: Data de publicação, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, hint: "Define a ordem: a mais recente aparece primeiro." }
+      - { name: periodo, label: Período do evento, widget: string, required: false, hint: "Opcional. Ex.: 16 a 18 de Junho de 2026. Se ficar vazio, mostra a data de publicação." }
+      - { name: local, label: Local, widget: string, required: false, hint: "Ex.: Expo Center Norte, SP" }
+      - { name: etiquetas, label: Etiquetas, widget: list, required: false, max: 3, hint: "Até 3, em MAIÚSCULAS. Ex.: MUNDOGEO 2026. A primeira fica em laranja." }
+      - { name: capa, label: Foto de capa, widget: image, required: false, choose_url: false, hint: "Foto horizontal, de preferência de um trabalho ou evento real. Se ficar vazia, o site cria uma capa ilustrada." }
+      - { name: capaAlt, label: Descrição da foto (acessibilidade), widget: string, required: false, hint: "Diga o que aparece na foto. Ex.: Equipe no estande da MundoGEO." }
+      - { name: capaTexto, label: Texto da capa ilustrada, widget: string, required: false, pattern: ['^.{0,40}$', 'Use até 40 caracteres'], hint: "Só aparece quando não há foto. Ex.: MundoGEO Connect 2026" }
+      - { name: resumo, label: Resumo, widget: text, pattern: ['^[\s\S]{1,320}$', 'Use até 320 caracteres'], hint: "Aparece no cartão da página inicial e no Google." }
+      - { name: body, label: Texto completo, widget: markdown, buttons: [bold, italic, link, heading-two, bulleted-list, numbered-list, quote], editor_components: [image], modes: [rich_text] }
+
+  # ───────────────── EQUIPE ─────────────────
+  - name: equipe
+    label: Equipe
+    label_singular: Membro da equipe
+    description: "Pessoas da seção Corpo Técnico Especializado."
+    folder: src/equipe
+    extension: md
+    create: true
+    slug: "{{nome}}"
+    identifier_field: nome
+    summary: "{{ordem}}. {{nome}} — {{cargo}}"
+    sortable_fields: [ordem, nome]
+    fields:
+      - { name: nome, label: Nome completo, widget: string, pattern: ['^.{1,48}$', 'Use até 48 caracteres'] }
+      - { name: cargo, label: Cargo, widget: string, pattern: ['^.{1,32}$', 'Use até 32 caracteres'], hint: "Ex.: Engenheiro Cartógrafo" }
+      - { name: ordem, label: Posição na lista, widget: number, value_type: int, min: 1, default: 9, hint: "1 aparece primeiro." }
+      - { name: foto, label: Foto, widget: image, required: false, choose_url: false, hint: "Foto vertical (retrato), de preferência em campo. Sem foto, o site mostra as iniciais." }
+      - { name: bio, label: Biografia, widget: text, pattern: ['^[\s\S]{1,300}$', 'Use até 300 caracteres'] }
+
+  # ───────────────── PÁGINA INICIAL E CONTATOS ─────────────────
+  - name: paginas
+    label: Página inicial e contatos
+    editor: { preview: false }
+    files:
+      - name: contatos
+        label: Contatos, rodapé e Google
+        file: src/_data/site.json
+        fields:
+          - { name: nome, label: Nome da empresa, widget: string }
+          - { name: razaoSocial, label: Razão social (rodapé), widget: string }
+          - { name: cnpj, label: CNPJ, widget: string }
+          - { name: url, label: Endereço do site, widget: hidden }
+          - { name: cidade, label: Cidade, widget: string }
+          - { name: estado, label: Estado (sigla), widget: string, pattern: ['^[A-Z]{2}$', 'Use a sigla, ex.: PE'] }
+          - { name: sede, label: Sede (texto no contato), widget: string }
+          - { name: whatsapp, label: WhatsApp que recebe os pedidos, widget: string, hint: "Com DDD. Ex.: (81) 98988-5671" }
+          - { name: mensagemWhatsapp, label: Mensagem inicial do WhatsApp, widget: string }
+          - name: telefones
+            label: Telefones
+            widget: list
+            fields: [{ name: numero, label: Telefone, widget: string }]
+          - name: emails
+            label: E-mails
+            widget: list
+            fields: [{ name: email, label: E-mail, widget: string }]
+          - { name: seoTitulo, label: Título no Google, widget: string, pattern: ['^.{1,70}$', 'Use até 70 caracteres'] }
+          - { name: seoDescricao, label: Descrição no Google, widget: text, pattern: ['^[\s\S]{1,170}$', 'Use até 170 caracteres'] }
+          - { name: imagemCompartilhamento, label: Imagem ao compartilhar o link, widget: image, choose_url: false, hint: "1200 × 630 px. Aparece no WhatsApp e redes sociais." }
+
+      - name: home
+        label: Textos da página inicial
+        file: src/_data/home.json
+        fields:
+          - name: hero
+            label: Topo (primeira tela)
+            widget: object
+            collapsed: false
+            fields:
+              - { name: coordenadas, label: Linha de coordenadas, widget: string, pattern: ['^.{0,60}$', 'Use até 60 caracteres'] }
+              - { name: titulo, label: Título principal, widget: string, pattern: ['^.{1,70}$', 'Use até 70 caracteres para não quebrar o layout'] }
+              - { name: subtitulo, label: Subtítulo, widget: text, pattern: ['^[\s\S]{1,220}$', 'Use até 220 caracteres'] }
+              - { name: botaoPrincipal, label: Botão laranja, widget: string, pattern: ['^.{1,26}$', 'Use até 26 caracteres'] }
+              - { name: botaoSecundario, label: Botão contornado, widget: string, pattern: ['^.{1,26}$', 'Use até 26 caracteres'] }
+              - { name: imagem, label: Imagem aérea de fundo, widget: image, required: false, choose_url: false, hint: "Ortofoto ou foto de drone, horizontal, alta resolução. O site escurece a imagem automaticamente para o texto ficar legível. Vazia = ilustração." }
+          - name: numeros
+            label: Faixa de números
+            widget: object
+            fields:
+              - { name: anos, label: Anos de experiência (número), widget: number, value_type: int }
+              - { name: anosRotulo, label: Rótulo dos anos, widget: string }
+              - { name: horasVoo, label: Horas de voo (em milhares), widget: number, value_type: int, hint: "5 aparece como +5k" }
+              - { name: horasVooRotulo, label: Rótulo das horas, widget: string }
+              - { name: destaque1, label: Destaque 1, widget: string }
+              - { name: destaque2Titulo, label: Destaque 2 — título, widget: string }
+              - { name: destaque2Texto, label: Destaque 2 — texto, widget: text }
+          - name: quemSomos
+            label: Quem somos
+            widget: object
+            fields:
+              - { name: rotulo, label: Rótulo, widget: string }
+              - { name: titulo, label: Título, widget: string, pattern: ['^.{1,60}$', 'Use até 60 caracteres'] }
+              - { name: paragrafo1, label: Parágrafo 1, widget: text }
+              - { name: paragrafo2, label: Parágrafo 2, widget: text }
+          - name: proposito
+            label: Nosso propósito
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: subtitulo, label: Subtítulo, widget: text }
+              - { name: missao, label: Missão, widget: text }
+              - { name: visao, label: Visão, widget: text }
+              - name: valores
+                label: Valores
+                widget: list
+                max: 6
+                fields: [{ name: titulo, label: Valor, widget: string }, { name: texto, label: Descrição, widget: text }]
+          - name: especialidades
+            label: Especialidades técnicas
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: subtitulo, label: Subtítulo, widget: text }
+              - name: itens
+                label: Serviços principais
+                widget: list
+                max: 5
+                fields:
+                  - { name: titulo, label: Serviço, widget: string }
+                  - { name: texto, label: Descrição, widget: text }
+                  - { name: selos, label: Selos, widget: list, required: false, max: 3, fields: [{ name: selo, label: Selo, widget: string }] }
+              - { name: outros, label: Outros serviços (etiquetas), widget: list, fields: [{ name: nome, label: Serviço, widget: string }] }
+              - { name: chamadaTitulo, label: Chamada — título, widget: string }
+              - { name: chamadaTexto, label: Chamada — texto, widget: text }
+              - { name: chamadaBotao, label: Chamada — botão, widget: string }
+              - { name: imagemFaixa, label: Imagem da faixa do plano de voo, widget: image, required: false, choose_url: false, hint: "Foto aérea horizontal. Vazia = ilustração." }
+          - name: noticias
+            label: Cabeçalho das notícias
+            widget: object
+            fields:
+              - { name: rotulo, label: Rótulo, widget: string }
+              - { name: titulo, label: Título, widget: string }
+              - { name: subtitulo, label: Subtítulo, widget: text }
+          - name: diferenciais
+            label: Diferenciais
+            widget: object
+            fields:
+              - { name: tituloInicio, label: Título — parte branca, widget: string }
+              - { name: tituloDestaque, label: Título — parte laranja, widget: string }
+              - { name: texto, label: Texto, widget: text }
+              - { name: itens, label: Diferenciais, widget: list, max: 4, fields: [{ name: titulo, label: Título, widget: string }, { name: texto, label: Texto, widget: text }] }
+              - { name: selos, label: Quadros, widget: list, max: 3, fields: [{ name: nome, label: Texto, widget: string }] }
+              - { name: suporte, label: Número do quadro laranja (%), widget: number, value_type: int }
+              - { name: suporteRotulo, label: Rótulo do quadro laranja, widget: string }
+          - name: equipe
+            label: Cabeçalho da equipe
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: subtitulo, label: Subtítulo, widget: text }
+          - name: faq
+            label: Dúvidas frequentes
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: subtitulo, label: Subtítulo, widget: text }
+              - { name: perguntas, label: Perguntas, widget: list, fields: [{ name: pergunta, label: Pergunta, widget: string }, { name: resposta, label: Resposta, widget: text }] }
+          - name: contato
+            label: Contato
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: texto, label: Texto, widget: text }
+              - { name: botao, label: Botão do formulário, widget: string }
+              - { name: servicos, label: Opções de serviço no formulário, widget: list, fields: [{ name: nome, label: Serviço, widget: string }] }

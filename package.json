@@ -1,0 +1,14 @@
+{
+  "name": "geometrica-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site da GeoMétrica SIG Soluções — Eleventy + painel Decap CMS",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6"
+  }
+}
