@@ -4,11 +4,11 @@ backend:
   name: git-gateway
   branch: main
   commit_messages:
-    create: "[skip netlify] Painel: cria {{collection}} “{{slug}}”"
-    update: "[skip netlify] Painel: atualiza {{collection}} “{{slug}}”"
-    delete: "[skip netlify] Painel: remove {{collection}} “{{slug}}”"
-    uploadMedia: "[skip netlify] Painel: envia imagem “{{path}}”"
-    deleteMedia: "[skip netlify] Painel: remove imagem “{{path}}”"
+    create: "Painel: cria {{collection}} “{{slug}}”"
+    update: "Painel: atualiza {{collection}} “{{slug}}”"
+    delete: "Painel: remove {{collection}} “{{slug}}”"
+    uploadMedia: "Painel: envia imagem “{{path}}”"
+    deleteMedia: "Painel: remove imagem “{{path}}”"
 
 locale: pt
 site_url: https://geometricasig.com.br

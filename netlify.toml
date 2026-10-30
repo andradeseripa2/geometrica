@@ -2,6 +2,8 @@
   command = "npm run build"
   publish = "_site"
   functions = "netlify/functions"
+  # Pula builds das alterações do painel; o botão "Publicar site" constrói.
+  ignore = "bash netlify/ignorar-build.sh"
 
 [build.environment]
   NODE_VERSION = "22"

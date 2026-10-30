@@ -25,26 +25,48 @@
 <div id="publicar-msg" role="status"></div>
 <button id="publicar" type="button" hidden>Publicar site</button>
 <script>
-  // Botão que coloca no ar todas as alterações salvas no painel, de uma vez.
+  // Botão "Publicar site": coloca no ar, de uma vez, tudo o que foi salvo no painel.
   (function () {
     var btn = document.getElementById("publicar");
     var msg = document.getElementById("publicar-msg");
-    function aviso(t) { msg.textContent = t; msg.style.display = "block"; }
+    function aviso(t, erro) {
+      msg.textContent = t;
+      msg.style.background = erro ? "#8A1C1C" : "#1D2A21";
+      msg.style.display = "block";
+    }
     function mostrar() { btn.hidden = !(window.netlifyIdentity && netlifyIdentity.currentUser()); }
     if (window.netlifyIdentity) {
-      netlifyIdentity.on("init", mostrar); netlifyIdentity.on("login", mostrar); netlifyIdentity.on("logout", mostrar);
+      netlifyIdentity.on("init", mostrar);
+      netlifyIdentity.on("login", mostrar);
+      netlifyIdentity.on("logout", mostrar);
     }
     btn.addEventListener("click", function () {
-      var u = netlifyIdentity.currentUser(); if (!u) return;
-      btn.disabled = true; btn.textContent = "Publicando…";
-      u.jwt().then(function (token) {
-        return fetch("/.netlify/functions/publicar", { method: "POST", headers: { Authorization: "Bearer " + token } });
-      }).then(function (r) {
-        return r.text().then(function (t) {
-          if (r.ok) aviso("Pronto! As alterações entram no ar em 1 a 2 minutos.");
-          else aviso("Não foi possível publicar: " + t);
-        });
-      }).catch(function () { aviso("Sem conexão. Tente de novo."); })
+      var u = window.netlifyIdentity && netlifyIdentity.currentUser();
+      if (!u) { aviso("Sessão expirada. Entre no painel de novo.", true); return; }
+      btn.disabled = true; btn.textContent = "Publicando…"; msg.style.display = "none";
+      u.jwt(true) // força token novo
+        .then(function (token) {
+          return fetch("/.netlify/functions/publicar", {
+            method: "POST",
+            headers: { "Authorization": "Bearer " + token, "Content-Type": "application/json" },
+            body: "{}",
+            cache: "no-store"
+          });
+        })
+        .then(function (r) {
+          return r.text().then(function (t) {
+            var dados = null;
+            try { dados = JSON.parse(t); } catch (e) {}
+            if (r.ok && dados && dados.ok === true) {
+              aviso("Pronto! As alterações entram no ar em 1 a 2 minutos.", false);
+            } else {
+              var detalhe = (dados && dados.mensagem) || ("resposta inesperada (HTTP " + r.status + ")");
+              aviso("Não foi possível publicar: " + detalhe, true);
+              console.error("[publicar]", r.status, t);
+            }
+          });
+        })
+        .catch(function (e) { aviso("Falha de conexão: " + (e && e.message), true); })
         .finally(function () { btn.disabled = false; btn.textContent = "Publicar site"; });
     });
   })();
