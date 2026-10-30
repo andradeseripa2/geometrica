@@ -17,6 +17,7 @@
 </style>
 </head>
 <body>
+<script>window.CMS_MANUAL_INIT = true; // inicia o painel só depois de ajustar os textos</script>
 <script src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"></script>
 <script>
   // Prévia das notícias com a cara do site
@@ -27,34 +28,46 @@
 
   // O "Publicar" do Decap só salva no GitHub; quem coloca no ar é o botão
   // "Colocar site no ar". Por isso, no painel, "Publicar" vira "Salvar".
+  // Caminhos conferidos no locale pt do decap-cms-locales 3.x:
+  //   pt.editor.editorToolbar  (botões da barra do editor)
+  //   pt.editor.editor         (confirmações)
+  //   pt.ui.toast              (avisos)
   (function () {
-    if (!window.CMS || !CMS.getLocale || !CMS.registerLocale) return;
-    var base = CMS.getLocale("pt");
-    if (!base) return;
-    var pt = JSON.parse(JSON.stringify(base));
-    function aplicar(alvo, trocas) { for (var k in trocas) alvo[k] = trocas[k]; }
-    pt.editor = pt.editor || {};
-    pt.editorToolbar = pt.editorToolbar || {};
-    pt.ui = pt.ui || {}; pt.ui.toast = pt.ui.toast || {};
-    aplicar(pt.editorToolbar, {
-      publish: "Salvar",
-      publishing: "Salvando...",
-      published: "Salvo",
-      publishNow: "Salvar agora",
-      publishAndCreateNew: "Salvar e criar novo(a)",
-      publishAndDuplicate: "Salvar e duplicar",
-      deletePublishedEntry: "Excluir entrada"
-    });
-    aplicar(pt.editor, {
-      onPublishing: "Tem certeza que deseja salvar esta entrada?",
-      onPublishingWithUnsavedChanges: "Há mudanças não salvas. Salve antes de continuar.",
-      onDeletePublishedEntry: "Tem certeza de que deseja excluir esta entrada?"
-    });
-    aplicar(pt.ui.toast, {
-      entryPublished: "Salvo! Para aparecer no site, clique em \u201cColocar site no ar\u201d.",
-      onFailToPublishEntry: "Falha ao salvar: %{details}"
-    });
-    CMS.registerLocale("pt", pt);
+    if (!window.CMS) return;
+    try {
+      var base = CMS.getLocale && CMS.getLocale("pt");
+      if (base && CMS.registerLocale) {
+        var pt = JSON.parse(JSON.stringify(base));
+        pt.editor = pt.editor || {};
+        pt.editor.editorToolbar = pt.editor.editorToolbar || {};
+        pt.editor.editor = pt.editor.editor || {};
+        pt.ui = pt.ui || {};
+        pt.ui.toast = pt.ui.toast || {};
+        Object.assign(pt.editor.editorToolbar, {
+          publish: "Salvar",
+          publishing: "Salvando...",
+          published: "Salvo",
+          publishNow: "Salvar agora",
+          publishAndCreateNew: "Salvar e criar novo(a)",
+          publishAndDuplicate: "Salvar e duplicar",
+          deletePublishedEntry: "Excluir entrada"
+        });
+        Object.assign(pt.editor.editor, {
+          onPublishing: "Tem certeza que deseja salvar esta entrada?",
+          onPublishingWithUnsavedChanges: "Há mudanças não salvas. Salve antes de continuar.",
+          onDeletePublishedEntry: "Tem certeza de que deseja excluir esta entrada?"
+        });
+        Object.assign(pt.ui.toast, {
+          entryPublished: "Salvo! Para aparecer no site, clique em \u201cColocar site no ar\u201d.",
+          onFailToPublishEntry: "Falha ao salvar: %{details}"
+        });
+        CMS.registerLocale("pt", pt);
+      }
+    } catch (e) {
+      console.error("[textos do painel]", e);
+    } finally {
+      CMS.init(); // sempre inicia o painel, mesmo se o ajuste falhar
+    }
   })();
 </script>
 <div id="publicar-msg" role="status"></div>
