@@ -50,6 +50,17 @@ Ninguém precisa ter conta no GitHub. A senha é de cada pessoa e você não pre
 
 > **Atenção:** o serviço de login do Netlify (Identity) chegou a ser anunciado como descontinuado em 2025 e depois mantido. Se no momento da configuração ele não estiver disponível, a alternativa é o DecapBridge (gratuito para até 10 usuários). Nesse caso, só a seção `backend` do arquivo `src/admin/config.yml` muda.
 
+## Passo 3b — Botão "Publicar site" (economiza deploys)
+
+As edições do painel são salvas com `[skip netlify]` e **não** disparam deploy. O cliente publica tudo de uma vez pelo botão laranja do painel.
+
+1. No Netlify: **Project configuration → Build & deploy → Continuous deployment**: deixe os builds **ativos** (não use "Stop builds", senão o botão também para).
+2. Em **Build hooks → Add build hook**, nome "Painel", branch `main`. Copie o endereço gerado.
+3. Em **Project configuration → Environment variables → Add a variable**: chave `BUILD_HOOK_URL`, valor = o endereço copiado.
+4. Faça um deploy para a função carregar a variável.
+
+Plano gratuito: 300 créditos/mês, 15 por publicação (cerca de 20 publicações/mês).
+
 ## Passo 4 — Conferências finais
 
 - [ ] Abrir o site no celular e no computador

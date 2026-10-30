@@ -3,7 +3,9 @@
 Endereço: **geometricasig.com.br/admin**
 Entre com o e-mail e a senha que você criou pelo convite.
 
-Tudo o que você salvar aparece no site em **1 a 2 minutos**. Se não aparecer, atualize a página do site (Ctrl+F5 no computador).
+**Importante:** salvar no painel **não** coloca a mudança no ar sozinho. Faça todas as alterações que quiser e, no final, clique no botão laranja **Publicar site**, no canto inferior direito. Em 1 a 2 minutos tudo aparece de uma vez.
+
+Junte as mudanças antes de publicar: o plano gratuito de hospedagem permite cerca de 20 publicações por mês.
 
 ---
 
@@ -19,7 +21,8 @@ Tudo o que você salvar aparece no site em **1 a 2 minutos**. Se não aparecer, 
    - **Descrição da foto:** diga o que aparece nela. Ajuda quem usa leitor de tela e o Google.
    - **Resumo:** aparece no cartão da página inicial e no Google.
    - **Texto completo:** o corpo da notícia. Dá para usar negrito, links, listas, subtítulos e fotos no meio do texto.
-3. Clique em **Publicar → Publicar agora**.
+3. Clique em **Publicar → Publicar agora** para salvar.
+4. Quando terminar todas as mudanças, clique em **Publicar site** (botão laranja) para colocar no ar.
 
 As 4 notícias mais recentes aparecem na página inicial. As demais ficam em **geometricasig.com.br/noticias**.
 
