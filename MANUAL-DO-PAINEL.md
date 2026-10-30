@@ -47,6 +47,7 @@ Para **adicionar alguém**, clique em **Novo Membro da equipe**. Para **remover*
 1. Clique em **Página inicial e contatos → Textos da página inicial**.
 2. Cada bloco corresponde a uma seção do site (Topo, Quem somos, Propósito, Especialidades, Diferenciais, Dúvidas frequentes, Contato).
 3. Alguns campos têm limite de caracteres. Isso existe para o texto não quebrar o visual do site.
+4. Clique em **Salvar** e, quando terminar tudo, em **Colocar site no ar**.
 
 **Imagem aérea do topo:** no bloco **Topo**, envie uma ortofoto ou foto de drone horizontal em boa resolução. O site escurece a imagem automaticamente para o título continuar legível.
 
@@ -54,6 +55,7 @@ Para **adicionar alguém**, clique em **Novo Membro da equipe**. Para **remover*
 
 1. **Página inicial e contatos → Contatos, rodapé e Google**.
 2. O campo **WhatsApp que recebe os pedidos** é o número para onde o formulário do site manda as mensagens.
+3. Clique em **Salvar** e depois em **Colocar site no ar**.
 
 ## 5. Desfazer um erro
 
