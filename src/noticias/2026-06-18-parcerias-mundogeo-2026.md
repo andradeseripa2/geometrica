@@ -6,9 +6,12 @@ local: Expo Center Norte, SP
 etiquetas:
   - LEICA PARCERIA
   - DEMONSTRAÇÃO RTK
-capa: ""
+capa: /assets/img/uploads/leica_parceria-shptclve.webp
 capaTexto: Alianças & Engenharia
-resumo: Durante o MundoGEO Connect 2026, realizado entre os dias 16 e 18 de junho de 2026, no Expo Center Norte, em São Paulo (SP), a GeoMétrica SIG Soluções também esteve ao lado de importantes parceiros do setor de geotecnologias.
+resumo: Durante o MundoGEO Connect 2026, realizado entre os dias 16 e 18 de
+  junho de 2026, no Expo Center Norte, em São Paulo (SP), a GeoMétrica SIG
+  Soluções também esteve ao lado de importantes parceiros do setor de
+  geotecnologias.
 ---
 Durante o MundoGEO Connect 2026, realizado entre os dias 16 e 18 de junho de 2026, no Expo Center Norte, em São Paulo (SP), a GeoMétrica SIG Soluções também esteve ao lado de importantes parceiros do setor de geotecnologias.
 
