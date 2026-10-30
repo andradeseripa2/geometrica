@@ -1,20 +1,53 @@
 {
-  "hero": {
-    "coordenadas": "RECIFE / PE · 08°03′S 34°52′W · PRECISÃO RTK",
-    "titulo": "Inovação geoespacial para decisões inteligentes.",
-    "subtitulo": "Transformamos dados territoriais em informações estratégicas para empresas, produtores rurais e gestão pública. Precisão centimétrica (RTK) e segurança normativa.",
-    "botaoPrincipal": "Solicitar Diagnóstico",
-    "botaoSecundario": "Conheça a Empresa",
-    "imagem": ""
-  },
-  "numeros": {
-    "anos": 10,
-    "anosRotulo": "ANOS DE EXPERIÊNCIA",
-    "horasVoo": 5,
-    "horasVooRotulo": "HORAS DE VOO",
-    "destaque1": "Corpo Técnico Especializado",
-    "destaque2Titulo": "Segurança Jurídica Absoluta",
-    "destaque2Texto": "Projetos estruturados visando a aprovação ágil e segura nos órgãos competentes."
+  "especialidades": {
+    "titulo": "Especialidades Técnicas",
+    "subtitulo": "Entregamos soluções completas combinando experiência de campo com hardware e software de ponta para resultados de alta confiabilidade.",
+    "itens": [
+      {
+        "titulo": "Topografia e Aerolevantamento com Drones",
+        "texto": "Utilizamos Drones de última geração com sensores RTK para gerar ortofotomosaicos georreferenciados, modelos digitais de superfície e terreno com alta precisão e produção cartográfica profissional.",
+        "selos": [
+          {
+            "selo": "Padrão INCRA (SIGEF)"
+          },
+          {
+            "selo": "Drones Multiespectrais"
+          }
+        ]
+      },
+      {
+        "titulo": "Georreferenciamento de Imóveis",
+        "texto": "Certificação de imóveis rurais no INCRA (SIGEF), levantamento de divisas com GNSS L1/L2, geodésia e garantia de segurança jurídica completa.",
+        "selos": [
+          {
+            "selo": "Certificação oficial"
+          }
+        ]
+      },
+      {
+        "titulo": "Monitoramento Ambiental e Áreas de Risco",
+        "texto": "Análise temporal de vegetação, mapeamento ambiental, monitoramento contínuo de bacias e áreas de risco utilizando sensoriamento remoto de alta resolução e análise de dados geoespaciais.",
+        "selos": []
+      }
+    ],
+    "outros": [
+      {
+        "nome": "Regularização Fundiária"
+      },
+      {
+        "nome": "Topografia e Geodésia"
+      },
+      {
+        "nome": "Planejamento Territorial"
+      },
+      {
+        "nome": "Análise de Dados SIG"
+      }
+    ],
+    "chamadaTitulo": "Precisa de suporte técnico especializado?",
+    "chamadaTexto": "Nossa equipe está pronta para apresentar a melhor solução em inteligência geoespacial para o seu desafio.",
+    "chamadaBotao": "Falar com um Especialista",
+    "imagemFaixa": "/assets/img/uploads/img-20261029-wa0056.jpg"
   },
   "quemSomos": {
     "rotulo": "QUEM SOMOS",
@@ -22,37 +55,33 @@
     "paragrafo1": "A GeoMétrica SIG Soluções é estruturada para atuação técnica em projetos de engenharia, geotecnologia e análise territorial, nas esferas pública e privada. Nosso propósito é apoiar decisões técnicas com base em dados consistentes.",
     "paragrafo2": "Atuamos com rigor absoluto e confiabilidade, garantindo que todo mapeamento técnico, ambiental e cartográfico esteja rigorosamente alinhado às normas do INCRA (SIGEF) e legislação vigente."
   },
-  "proposito": {
-    "titulo": "Nosso Propósito",
-    "subtitulo": "Os pilares que guiam nossa atuação tecnológica, técnica e ética no mercado.",
-    "missao": "Desenvolver soluções inovadoras em geotecnologia, por meio da atuação como startup de base tecnológica, integrando georreferenciamento, análise espacial e inteligência territorial para oferecer suporte técnico qualificado à regularização fundiária, ao planejamento urbano e à gestão ambiental, com precisão, eficiência e segurança jurídica.",
-    "visao": "Ser reconhecida como uma startup referência nacional em soluções geoespaciais e inteligência territorial, destacando-se pela excelência no georreferenciamento de imóveis rurais e urbanos, pela aplicação estratégica de tecnologia e pela capacidade de transformar dados territoriais em valor econômico, jurídico e social.",
-    "valores": [
-      { "titulo": "Inovação e Mentalidade de Startup", "texto": "Atuamos com agilidade, visão estratégica e cultura de inovação contínua, desenvolvendo soluções escaláveis baseadas em tecnologia e dados." },
-      { "titulo": "Excelência Técnica e Conformidade Legal", "texto": "Garantimos rigor técnico e aderência às normas legais, cartográficas e ambientais, assegurando qualidade e segurança em cada entrega." },
-      { "titulo": "Compromisso com a Regularização e Governança", "texto": "Contribuímos para a organização do território, a segurança jurídica da propriedade e a eficiência dos processos fundiários e urbanos." },
-      { "titulo": "Tecnologia para Desenvolvimento Sustentável", "texto": "Utilizamos ferramentas tecnológicas para promover o uso responsável do solo, a preservação ambiental e o crescimento econômico equilibrado." },
-      { "titulo": "Ética, Transparência e Parceria", "texto": "Construímos relações de confiança com clientes, instituições e parceiros, pautadas pela ética, clareza e responsabilidade profissional." }
+  "contato": {
+    "titulo": "Pronto para mapear seu futuro?",
+    "texto": "Nossa equipe técnica está pronta para analisar as necessidades do seu projeto com agilidade e precisão.",
+    "botao": "Iniciar Conversa no WhatsApp",
+    "servicos": [
+      {
+        "nome": "Topografia e aerolevantamento"
+      },
+      {
+        "nome": "Georreferenciamento de imóveis"
+      },
+      {
+        "nome": "Monitoramento ambiental"
+      },
+      {
+        "nome": "Regularização fundiária"
+      },
+      {
+        "nome": "Planejamento territorial"
+      },
+      {
+        "nome": "Análise de dados SIG"
+      },
+      {
+        "nome": "Outro"
+      }
     ]
-  },
-  "especialidades": {
-    "titulo": "Especialidades Técnicas",
-    "subtitulo": "Entregamos soluções completas combinando experiência de campo com hardware e software de ponta para resultados de alta confiabilidade.",
-    "itens": [
-      { "titulo": "Topografia e Aerolevantamento com Drones", "texto": "Utilizamos Drones de última geração com sensores RTK para gerar ortofotomosaicos georreferenciados, modelos digitais de superfície e terreno com alta precisão e produção cartográfica profissional.", "selos": [{ "selo": "Padrão INCRA (SIGEF)" }, { "selo": "Drones Multiespectrais" }] },
-      { "titulo": "Georreferenciamento de Imóveis", "texto": "Certificação de imóveis rurais no INCRA (SIGEF), levantamento de divisas com GNSS L1/L2, geodésia e garantia de segurança jurídica completa.", "selos": [{ "selo": "Certificação oficial" }] },
-      { "titulo": "Monitoramento Ambiental e Áreas de Risco", "texto": "Análise temporal de vegetação, mapeamento ambiental, monitoramento contínuo de bacias e áreas de risco utilizando sensoriamento remoto de alta resolução e análise de dados geoespaciais.", "selos": [] }
-    ],
-    "outros": [
-      { "nome": "Regularização Fundiária" },
-      { "nome": "Topografia e Geodésia" },
-      { "nome": "Planejamento Territorial" },
-      { "nome": "Análise de Dados SIG" }
-    ],
-    "chamadaTitulo": "Precisa de suporte técnico especializado?",
-    "chamadaTexto": "Nossa equipe está pronta para apresentar a melhor solução em inteligência geoespacial para o seu desafio.",
-    "chamadaBotao": "Falar com um Especialista",
-    "imagemFaixa": ""
   },
   "noticias": {
     "rotulo": "GEOMÉTRICA EM AÇÃO",
@@ -64,13 +93,25 @@
     "tituloDestaque": "inteligência aplicada.",
     "texto": "Agregamos nossa experiência em operações reais com infraestrutura de altíssima performance para entregar dados totalmente confiáveis e prontos para decisão.",
     "itens": [
-      { "titulo": "Equipamentos de Alta Performance", "texto": "Operamos com Drones Multiespectrais e mantemos Estações de Processamento Avançadas para lidar com enormes volumes de dados georreferenciados rapidamente." },
-      { "titulo": "Conformidade Legal Absoluta", "texto": "Projetos estruturados para aprovação sem ressalvas nos órgãos competentes, como o INCRA (SIGEF), garantindo tranquilidade aos proprietários e investidores." }
+      {
+        "titulo": "Equipamentos de Alta Performance",
+        "texto": "Operamos com Drones Multiespectrais e mantemos Estações de Processamento Avançadas para lidar com enormes volumes de dados georreferenciados rapidamente."
+      },
+      {
+        "titulo": "Conformidade Legal Absoluta",
+        "texto": "Projetos estruturados para aprovação sem ressalvas nos órgãos competentes, como o INCRA (SIGEF), garantindo tranquilidade aos proprietários e investidores."
+      }
     ],
     "selos": [
-      { "nome": "Precisão Técnica" },
-      { "nome": "Laudos Certificados" },
-      { "nome": "Base SIG Robusta" }
+      {
+        "nome": "Precisão Técnica"
+      },
+      {
+        "nome": "Laudos Certificados"
+      },
+      {
+        "nome": "Base SIG Robusta"
+      }
     ],
     "suporte": 100,
     "suporteRotulo": "SUPORTE TÉCNICO"
@@ -83,24 +124,67 @@
     "titulo": "Dúvidas Frequentes",
     "subtitulo": "As respostas para as perguntas mais comuns sobre nossos serviços de geotecnologia.",
     "perguntas": [
-      { "pergunta": "O que é Georreferenciamento e por que eu preciso dele?", "resposta": "O georreferenciamento define a forma, dimensão e localização de um imóvel rural ou urbano através de métodos de levantamento topográfico (coordenadas geográficas). É obrigatório por lei para desmembramentos, parcelamentos, remembramentos e transferências de imóveis rurais (padrão INCRA), além de ser exigido por bancos para liberação de financiamentos e crédito agrícola." },
-      { "pergunta": "Quais as vantagens de fazer a topografia com Drones?", "resposta": "A fotogrametria com drones (aerolevantamento) oferece três vantagens principais sobre a topografia tradicional: Rapidez (mapeamento de grandes extensões em poucas horas), Riqueza de Detalhes (gera ortofotos de altíssima resolução e nuvens de pontos 3D) e Acesso (permite mapear áreas de mata densa, encostas ou locais de risco sem colocar a equipe em perigo), tudo isso mantendo a precisão centimétrica exigida pelas normas técnicas usando tecnologia RTK/PPK." },
-      { "pergunta": "Os laudos e mapeamentos têm validade legal?", "resposta": "Absolutamente. Nossa equipe é formada por engenheiros credenciados e especialistas habilitados nos devidos conselhos de classe (CREA) e no INCRA. Todos os nossos projetos possuem recolhimento de ART (Anotação de Responsabilidade Técnica) e seguem rigorosamente os manuais técnicos do INCRA e IBGE, garantindo total segurança jurídica para registro em cartório." },
-      { "pergunta": "Quanto tempo demora para a entrega de um projeto?", "resposta": "O prazo varia de acordo com a extensão da área, as condições climáticas e o tipo de serviço (apenas levantamento ou regularização completa). No entanto, o uso de drones e equipamentos de alta performance nos permite reduzir o tempo de campo drasticamente. Em nosso diagnóstico gratuito, fornecemos um cronograma detalhado e preciso para o seu caso específico." }
+      {
+        "pergunta": "O que é Georreferenciamento e por que eu preciso dele?",
+        "resposta": "O georreferenciamento define a forma, dimensão e localização de um imóvel rural ou urbano através de métodos de levantamento topográfico (coordenadas geográficas). É obrigatório por lei para desmembramentos, parcelamentos, remembramentos e transferências de imóveis rurais (padrão INCRA), além de ser exigido por bancos para liberação de financiamentos e crédito agrícola."
+      },
+      {
+        "pergunta": "Quais as vantagens de fazer a topografia com Drones?",
+        "resposta": "A fotogrametria com drones (aerolevantamento) oferece três vantagens principais sobre a topografia tradicional: Rapidez (mapeamento de grandes extensões em poucas horas), Riqueza de Detalhes (gera ortofotos de altíssima resolução e nuvens de pontos 3D) e Acesso (permite mapear áreas de mata densa, encostas ou locais de risco sem colocar a equipe em perigo), tudo isso mantendo a precisão centimétrica exigida pelas normas técnicas usando tecnologia RTK/PPK."
+      },
+      {
+        "pergunta": "Os laudos e mapeamentos têm validade legal?",
+        "resposta": "Absolutamente. Nossa equipe é formada por engenheiros credenciados e especialistas habilitados nos devidos conselhos de classe (CREA) e no INCRA. Todos os nossos projetos possuem recolhimento de ART (Anotação de Responsabilidade Técnica) e seguem rigorosamente os manuais técnicos do INCRA e IBGE, garantindo total segurança jurídica para registro em cartório."
+      },
+      {
+        "pergunta": "Quanto tempo demora para a entrega de um projeto?",
+        "resposta": "O prazo varia de acordo com a extensão da área, as condições climáticas e o tipo de serviço (apenas levantamento ou regularização completa). No entanto, o uso de drones e equipamentos de alta performance nos permite reduzir o tempo de campo drasticamente. Em nosso diagnóstico gratuito, fornecemos um cronograma detalhado e preciso para o seu caso específico."
+      }
     ]
   },
-  "contato": {
-    "titulo": "Pronto para mapear seu futuro?",
-    "texto": "Nossa equipe técnica está pronta para analisar as necessidades do seu projeto com agilidade e precisão.",
-    "botao": "Iniciar Conversa no WhatsApp",
-    "servicos": [
-      { "nome": "Topografia e aerolevantamento" },
-      { "nome": "Georreferenciamento de imóveis" },
-      { "nome": "Monitoramento ambiental" },
-      { "nome": "Regularização fundiária" },
-      { "nome": "Planejamento territorial" },
-      { "nome": "Análise de dados SIG" },
-      { "nome": "Outro" }
+  "numeros": {
+    "anos": 10,
+    "anosRotulo": "ANOS DE EXPERIÊNCIA",
+    "horasVoo": 5,
+    "horasVooRotulo": "HORAS DE VOO",
+    "destaque1": "Corpo Técnico Especializado",
+    "destaque2Titulo": "Segurança Jurídica Absoluta",
+    "destaque2Texto": "Projetos estruturados visando a aprovação ágil e segura nos órgãos competentes."
+  },
+  "hero": {
+    "coordenadas": "RECIFE / PE · 08°03′S 34°52′W · PRECISÃO RTK",
+    "titulo": "Inovação geoespacial para decisões inteligentes.",
+    "subtitulo": "Transformamos dados territoriais em informações estratégicas para empresas, produtores rurais e gestão pública. Precisão centimétrica (RTK) e segurança normativa.",
+    "botaoPrincipal": "Solicitar Diagnóstico",
+    "botaoSecundario": "Conheça a Empresa",
+    "imagem": ""
+  },
+  "proposito": {
+    "titulo": "Nosso Propósito",
+    "subtitulo": "Os pilares que guiam nossa atuação tecnológica, técnica e ética no mercado.",
+    "missao": "Desenvolver soluções inovadoras em geotecnologia, por meio da atuação como startup de base tecnológica, integrando georreferenciamento, análise espacial e inteligência territorial para oferecer suporte técnico qualificado à regularização fundiária, ao planejamento urbano e à gestão ambiental, com precisão, eficiência e segurança jurídica.",
+    "visao": "Ser reconhecida como uma startup referência nacional em soluções geoespaciais e inteligência territorial, destacando-se pela excelência no georreferenciamento de imóveis rurais e urbanos, pela aplicação estratégica de tecnologia e pela capacidade de transformar dados territoriais em valor econômico, jurídico e social.",
+    "valores": [
+      {
+        "titulo": "Inovação e Mentalidade de Startup",
+        "texto": "Atuamos com agilidade, visão estratégica e cultura de inovação contínua, desenvolvendo soluções escaláveis baseadas em tecnologia e dados."
+      },
+      {
+        "titulo": "Excelência Técnica e Conformidade Legal",
+        "texto": "Garantimos rigor técnico e aderência às normas legais, cartográficas e ambientais, assegurando qualidade e segurança em cada entrega."
+      },
+      {
+        "titulo": "Compromisso com a Regularização e Governança",
+        "texto": "Contribuímos para a organização do território, a segurança jurídica da propriedade e a eficiência dos processos fundiários e urbanos."
+      },
+      {
+        "titulo": "Tecnologia para Desenvolvimento Sustentável",
+        "texto": "Utilizamos ferramentas tecnológicas para promover o uso responsável do solo, a preservação ambiental e o crescimento econômico equilibrado."
+      },
+      {
+        "titulo": "Ética, Transparência e Parceria",
+        "texto": "Construímos relações de confiança com clientes, instituições e parceiros, pautadas pela ética, clareza e responsabilidade profissional."
+      }
     ]
   }
 }
