@@ -24,6 +24,38 @@
     CMS.registerPreviewStyle("/assets/css/site.css");
     CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
   }
+
+  // O "Publicar" do Decap só salva no GitHub; quem coloca no ar é o botão
+  // "Colocar site no ar". Por isso, no painel, "Publicar" vira "Salvar".
+  (function () {
+    if (!window.CMS || !CMS.getLocale || !CMS.registerLocale) return;
+    var base = CMS.getLocale("pt");
+    if (!base) return;
+    var pt = JSON.parse(JSON.stringify(base));
+    function aplicar(alvo, trocas) { for (var k in trocas) alvo[k] = trocas[k]; }
+    pt.editor = pt.editor || {};
+    pt.editorToolbar = pt.editorToolbar || {};
+    pt.ui = pt.ui || {}; pt.ui.toast = pt.ui.toast || {};
+    aplicar(pt.editorToolbar, {
+      publish: "Salvar",
+      publishing: "Salvando...",
+      published: "Salvo",
+      publishNow: "Salvar agora",
+      publishAndCreateNew: "Salvar e criar novo(a)",
+      publishAndDuplicate: "Salvar e duplicar",
+      deletePublishedEntry: "Excluir entrada"
+    });
+    aplicar(pt.editor, {
+      onPublishing: "Tem certeza que deseja salvar esta entrada?",
+      onPublishingWithUnsavedChanges: "Há mudanças não salvas. Salve antes de continuar.",
+      onDeletePublishedEntry: "Tem certeza de que deseja excluir esta entrada?"
+    });
+    aplicar(pt.ui.toast, {
+      entryPublished: "Salvo! Para aparecer no site, clique em \u201cColocar site no ar\u201d.",
+      onFailToPublishEntry: "Falha ao salvar: %{details}"
+    });
+    CMS.registerLocale("pt", pt);
+  })();
 </script>
 <div id="publicar-msg" role="status"></div>
 <script>

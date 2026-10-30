@@ -3,13 +3,20 @@
 Endereço: **geometricasig.com.br/admin**
 Entre com o e-mail e a senha que você criou pelo convite.
 
-**Importante:** salvar no painel **não** coloca a mudança no ar sozinho. Faça todas as alterações que quiser e, no final, clique no botão laranja **Colocar site no ar**, na barra do topo do painel. Em 1 a 2 minutos tudo aparece de uma vez.
+## Como funciona: Salvar e depois Colocar site no ar
+
+O painel tem **dois botões**, e cada um faz uma coisa:
+
+1. **Salvar** (no topo de cada notícia, pessoa ou página): guarda a alteração. Ela **ainda não aparece** no site.
+2. **Colocar site no ar** (botão laranja na barra do topo do painel): publica **de uma vez** tudo o que foi salvo. Em 1 a 2 minutos o site mostra as mudanças.
+
+Ou seja: faça todas as alterações, clicando em **Salvar** em cada uma, e no final clique **uma vez** em **Colocar site no ar**.
 
 Junte as mudanças antes de publicar: o plano gratuito de hospedagem permite cerca de 20 publicações por mês.
 
 ---
 
-## 1. Publicar uma notícia ou evento
+## 1. Criar uma notícia ou evento
 
 1. No menu da esquerda, clique em **Notícias & Eventos** e depois em **Novo Notícia**.
 2. Preencha:
@@ -21,8 +28,8 @@ Junte as mudanças antes de publicar: o plano gratuito de hospedagem permite cer
    - **Descrição da foto:** diga o que aparece nela. Ajuda quem usa leitor de tela e o Google.
    - **Resumo:** aparece no cartão da página inicial e no Google.
    - **Texto completo:** o corpo da notícia. Dá para usar negrito, links, listas, subtítulos e fotos no meio do texto.
-3. Clique em **Publicar → Publicar agora** para salvar (isso ainda não coloca no ar).
-4. Quando terminar todas as mudanças, clique em **Colocar site no ar** (botão laranja no topo) para colocar no ar.
+3. Clique em **Salvar → Salvar agora**. A notícia fica guardada, mas ainda não aparece no site.
+4. Quando terminar todas as mudanças, clique em **Colocar site no ar** (botão laranja no topo).
 
 As 4 notícias mais recentes aparecem na página inicial. As demais ficam em **geometricasig.com.br/noticias**.
 
@@ -31,7 +38,7 @@ As 4 notícias mais recentes aparecem na página inicial. As demais ficam em **g
 1. Clique em **Equipe** e escolha a pessoa.
 2. Em **Foto**, clique em **Escolher uma imagem** e envie uma foto **vertical** (retrato).
 3. Ajuste cargo, biografia (até 300 caracteres) ou **Posição na lista** (1 aparece primeiro).
-4. **Publicar → Publicar agora**.
+4. **Salvar → Salvar agora**. Depois, **Colocar site no ar**.
 
 Para **adicionar alguém**, clique em **Novo Membro da equipe**. Para **remover**, abra a pessoa e use **Excluir entrada**.
 
@@ -50,8 +57,8 @@ Para **adicionar alguém**, clique em **Novo Membro da equipe**. Para **remover*
 
 ## 5. Desfazer um erro
 
-- Antes de publicar, dá para fechar sem salvar.
-- Depois de publicar, cada versão fica guardada no histórico. Peça ao responsável técnico para voltar à versão anterior; nada se perde.
+- Antes de clicar em Salvar, dá para sair sem guardar nada.
+- Depois de salvar, cada versão fica guardada no histórico. Peça ao responsável técnico para voltar à versão anterior; nada se perde.
 
 ## Dicas para fotos
 
