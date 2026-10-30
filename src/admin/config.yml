@@ -30,7 +30,6 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     summary: "{{titulo}} — {{date | date('DD/MM/YYYY')}}"
     sortable_fields: [date, titulo]
-    view_filters: []
     fields:
       - { name: titulo, label: Título, widget: string, pattern: ['^.{1,90}$', 'Use até 90 caracteres'], hint: "Aparece no cartão e no topo da notícia." }
       - { name: date, label: Data de publicação, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, hint: "Define a ordem: a mais recente aparece primeiro." }
