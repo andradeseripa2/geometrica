@@ -4,9 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Painel · GeoMétrica SIG</title>
+<title>Login GeoMétrica SIG Soluções</title>
 <link rel="icon" href="/assets/img/favicon.png" type="image/png">
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<style>
+  /* Botão "Colocar site no ar" na barra do topo do painel */
+  #publicar { display: inline-flex; align-items: center; gap: 6px; margin-right: 12px; font: 600 13px system-ui, sans-serif; background: #FF5A1F; color: #111410; border: 0; border-radius: 5px; padding: 9px 14px; cursor: pointer; white-space: nowrap; }
+  #publicar:hover { background: #FF7A47; }
+  #publicar[disabled] { opacity: .7; cursor: wait; }
+  #publicar.solto { position: fixed; top: 10px; right: 20px; z-index: 9999; }
+  #publicar-msg { position: fixed; top: 64px; right: 20px; z-index: 9999; font: 14px system-ui, sans-serif; color: #F2F0E6; background: #1D2A21; border-radius: 6px; padding: 10px 14px; max-width: 340px; box-shadow: 0 6px 20px rgba(0,0,0,.25); display: none; }
+</style>
 </head>
 <body>
 <script src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"></script>
@@ -17,59 +25,107 @@
     CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
   }
 </script>
-<style>
-  #publicar { position: fixed; right: 20px; bottom: 20px; z-index: 9999; font: 600 14px system-ui, sans-serif; background: #FF5A1F; color: #111410; border: 0; border-radius: 6px; padding: 14px 20px; box-shadow: 0 6px 20px rgba(0,0,0,.25); cursor: pointer; }
-  #publicar[disabled] { opacity: .7; cursor: wait; }
-  #publicar-msg { position: fixed; right: 20px; bottom: 76px; z-index: 9999; font: 14px system-ui, sans-serif; background: #1D2A21; color: #F2F0E6; border-radius: 6px; padding: 10px 14px; max-width: 320px; display: none; }
-</style>
 <div id="publicar-msg" role="status"></div>
-<button id="publicar" type="button" hidden>Publicar site</button>
 <script>
-  // Botão "Publicar site": coloca no ar, de uma vez, tudo o que foi salvo no painel.
-  (function () {
-    var btn = document.getElementById("publicar");
-    var msg = document.getElementById("publicar-msg");
-    function aviso(t, erro) {
-      msg.textContent = t;
-      msg.style.background = erro ? "#8A1C1C" : "#1D2A21";
-      msg.style.display = "block";
+(function () {
+  var NOME = "Login GeoMétrica SIG Soluções";
+  var SITE = "https://geometricasig.com.br";
+  var id = window.netlifyIdentity;
+
+  /* ───────── 1. Login com a marca da GeoMétrica ───────── */
+  if (id && id.setLocale) id.setLocale("pt");
+
+  // A janela de login do Netlify roda num iframe do próprio site: dá para
+  // trocar o visual dela injetando estilos.
+  function marcarJanela() {
+    var f = document.getElementById("netlify-identity-widget");
+    var d = f && f.contentDocument;
+    if (!d || !d.head || d.getElementById("geo-login")) return;
+    var s = d.createElement("style");
+    s.id = "geo-login";
+    s.textContent =
+      ".callOut, .netlifyLogo { display: none !important; }" +
+      ".modalContent::before { content: '" + NOME + "'; display: block; padding: 28px 32px 0; font: 700 22px system-ui, sans-serif; color: #1D2A21; text-align: center; }" +
+      ".btn:not(.btnHeader):not(.btnClose):not(.btnLink) { background: #FF5A1F !important; border-color: #FF5A1F !important; color: #111410 !important; }";
+    d.head.appendChild(s);
+  }
+  if (id) { id.on("init", marcarJanela); id.on("open", marcarJanela); }
+
+  // Botão da tela de entrada do painel ("Entrar com o Netlify Identity")
+  function trocarTextos() {
+    var botoes = document.querySelectorAll("button");
+    for (var i = 0; i < botoes.length; i++) {
+      var b = botoes[i];
+      if (/Netlify/i.test(b.textContent) && b.id !== "publicar") b.textContent = NOME;
     }
-    function mostrar() { btn.hidden = !(window.netlifyIdentity && netlifyIdentity.currentUser()); }
-    if (window.netlifyIdentity) {
-      netlifyIdentity.on("init", mostrar);
-      netlifyIdentity.on("login", mostrar);
-      netlifyIdentity.on("logout", mostrar);
+    marcarJanela();
+  }
+
+  /* ───────── 2. Botão "Colocar site no ar" no topo ───────── */
+  var btn = document.createElement("button");
+  btn.id = "publicar";
+  btn.type = "button";
+  btn.textContent = "Colocar site no ar";
+  btn.title = "Publica de uma vez tudo o que foi salvo no painel";
+  var msg = document.getElementById("publicar-msg");
+
+  function aviso(t, erro) {
+    msg.textContent = t;
+    msg.style.background = erro ? "#8A1C1C" : "#1D2A21";
+    msg.style.display = "block";
+    clearTimeout(aviso.t);
+    aviso.t = setTimeout(function () { msg.style.display = "none"; }, erro ? 15000 : 8000);
+  }
+
+  // Encaixa o botão na barra do Decap, ao lado do link do site.
+  function encaixar() {
+    if (!(id && id.currentUser())) { if (btn.parentNode) btn.parentNode.removeChild(btn); return; }
+    var links = document.querySelectorAll('a[href^="' + SITE + '"]');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      if (a.offsetParent === null) continue;
+      if (btn.parentNode === a.parentNode && btn.nextSibling === a) return;
+      btn.classList.remove("solto");
+      a.parentNode.insertBefore(btn, a);
+      return;
     }
-    btn.addEventListener("click", function () {
-      var u = window.netlifyIdentity && netlifyIdentity.currentUser();
-      if (!u) { aviso("Sessão expirada. Entre no painel de novo.", true); return; }
-      btn.disabled = true; btn.textContent = "Publicando…"; msg.style.display = "none";
-      u.jwt(true) // força token novo
-        .then(function (token) {
-          return fetch("/.netlify/functions/publicar", {
-            method: "POST",
-            headers: { "Authorization": "Bearer " + token, "Content-Type": "application/json" },
-            body: "{}",
-            cache: "no-store"
-          });
-        })
-        .then(function (r) {
-          return r.text().then(function (t) {
-            var dados = null;
-            try { dados = JSON.parse(t); } catch (e) {}
-            if (r.ok && dados && dados.ok === true) {
-              aviso("Pronto! As alterações entram no ar em 1 a 2 minutos.", false);
-            } else {
-              var detalhe = (dados && dados.mensagem) || ("resposta inesperada (HTTP " + r.status + ")");
-              aviso("Não foi possível publicar: " + detalhe, true);
-              console.error("[publicar]", r.status, t);
-            }
-          });
-        })
-        .catch(function (e) { aviso("Falha de conexão: " + (e && e.message), true); })
-        .finally(function () { btn.disabled = false; btn.textContent = "Publicar site"; });
-    });
-  })();
+    // Se a barra mudar e o link não existir, o botão fica fixo no topo direito.
+    if (!btn.parentNode) { btn.classList.add("solto"); document.body.appendChild(btn); }
+  }
+
+  new MutationObserver(function () { trocarTextos(); encaixar(); })
+    .observe(document.body, { childList: true, subtree: true });
+  if (id) { id.on("login", encaixar); id.on("logout", encaixar); }
+
+  btn.addEventListener("click", function () {
+    var u = id && id.currentUser();
+    if (!u) { aviso("Sessão expirada. Entre no painel de novo.", true); return; }
+    btn.disabled = true; btn.textContent = "Publicando…"; msg.style.display = "none";
+    u.jwt(true)
+      .then(function (token) {
+        return fetch("/.netlify/functions/publicar", {
+          method: "POST",
+          headers: { "Authorization": "Bearer " + token, "Content-Type": "application/json" },
+          body: "{}",
+          cache: "no-store"
+        });
+      })
+      .then(function (r) {
+        return r.text().then(function (t) {
+          var dados = null;
+          try { dados = JSON.parse(t); } catch (e) {}
+          if (r.ok && dados && dados.ok === true) {
+            aviso("Pronto! As alterações entram no ar em 1 a 2 minutos.", false);
+          } else {
+            aviso("Não foi possível publicar: " + ((dados && dados.mensagem) || ("resposta inesperada (HTTP " + r.status + ")")), true);
+            console.error("[publicar]", r.status, t);
+          }
+        });
+      })
+      .catch(function (e) { aviso("Falha de conexão: " + (e && e.message), true); })
+      .finally(function () { btn.disabled = false; btn.textContent = "Colocar site no ar"; });
+  });
+})();
 </script>
 </body>
 </html>

@@ -52,7 +52,7 @@ Ninguém precisa ter conta no GitHub. A senha é de cada pessoa e você não pre
 
 ## Passo 3b — Botão "Publicar site" (economiza deploys)
 
-As edições do painel são salvas com `[skip netlify]` e **não** disparam deploy. O cliente publica tudo de uma vez pelo botão laranja do painel.
+As edições do painel (mensagens que começam com "Painel:") são puladas pelo `netlify/ignorar-build.sh` e **não** gastam deploy. O cliente publica tudo de uma vez pelo botão laranja **Colocar site no ar**, no topo do painel.
 
 1. No Netlify: **Project configuration → Build & deploy → Continuous deployment**: deixe os builds **ativos** (não use "Stop builds", senão o botão também para).
 2. Em **Build hooks → Add build hook**, nome "Painel", branch `main`. Copie o endereço gerado.
