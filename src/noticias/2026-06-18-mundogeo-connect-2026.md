@@ -6,6 +6,7 @@ local: Expo Center Norte, SP
 etiquetas:
   - MUNDOGEO 2026
 capa: /assets/img/uploads/mundogeo_presenca-bb_v5sbh.webp
+capaAlt: Evento Expo Center Norte
 capaTexto: MundoGEO Connect 2026
 resumo: A GeoMétrica SIG Soluções marcou presença no MundoGEO Connect 2026, o
   maior evento de geointeligência, drones, espaço e mobilidade aérea avançada da
