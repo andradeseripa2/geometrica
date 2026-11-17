@@ -1,6 +1,6 @@
 ---
 nome: Éden Jorge Machado Bezerra
-cargo: Fundador - Analista Geoespacial
+cargo: CEO - Analista Geoespacial
 ordem: 1
 foto: /assets/img/uploads/eden-dkrxdbiv.webp
 bio: Especialista em sensoriamento remoto e fotointeligência. Ampla experiência
